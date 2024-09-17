@@ -1,5 +1,5 @@
 # Laundry-application
-### Video Demo: 
+### Video Demo: https://www.youtube.com/watch?v=B53FK71vneQ
 
 ### Description
 Students often struggle to manage laundry due to busy schedules filled with classes, assignments, and other commitments. This project addresses the challenge by providing a simple and efficient online laundry service. The main goal is to save students time and reduce stress by streamlining the laundry process, allowing them to focus more on their studies and other priorities.
@@ -25,7 +25,7 @@ Order.java: This entity represents laundry orders within the application. It inc
  
 
 
-# Getting Started
+
 # Prerequisites
 To run this project, you will need:
 
