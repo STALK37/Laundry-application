@@ -1,15 +1,29 @@
 # Laundry-application
+### Video Demo: 
 
-# Overview
-This application provides an online laundry service aimed at helping students manage their laundry tasks more efficiently. It's designed for those who find themselves too busy to handle laundry on their own and prefer an online solution.
+### Description
+Students often struggle to manage laundry due to busy schedules filled with classes, assignments, and other commitments. This project addresses the challenge by providing a simple and efficient online laundry service. The main goal is to save students time and reduce stress by streamlining the laundry process, allowing them to focus more on their studies and other priorities.
 
-# Features and Technologies
-This project showcases a range of programming techniques and skills, including:
+#Code commenting
+Infro ntend folder, there is a subfolder called pages. This folder contains pages written using JavaScript and React, including AdminPart, AdminRegistration, CustomerPart, CustomerRegistration, Orders, and MainLayout.
 
-Database Design: Creation of tables and entities using PostgreSQL, demonstrating an understanding of relational database management systems and data modeling.
-HTTP Requests Management: Implementation of HTTP methods such as POST and GET in Java, showcasing the ability to handle web server interactions and data transmission.
-Cross-Origin Resource Sharing (CORS): Addressing and resolving CORS issues, ensuring secure and functional web application requests across different origins.
-Frontend Development: Utilization of React to achieve a minimalist website design, highlighting the ability to create dynamic and responsive user interfaces.
+index.js(AdminPart) : - The `AdminPart` component serves as the main interface for administrators of the online laundry service. It displays user-specific data fetched via React Query, including the admin's username and company name. The component allows admins to manage their profiles, including the ability to update profile images using file input. It features a logout functionality that clears authentication tokens and redirects users to the home page. Additionally, the component includes navigation elements, such as links to view orders and a Google Maps iframe for displaying location information. Styling is managed through an imported CSS file (`adminPart.css`), ensuring a cohesive and user-friendly interface for the admin role.
+
+index.js(AdminRegistration) : The `AdminRegistration` component provides a registration form for administrators to sign up for the online laundry service. It handles user input through controlled components managed by the `useState` hook. The form includes fields for username, email, password, repeated password, company name, and address. Upon submission, the component validates the passwords and sends a registration request to the server via an API call using Axios. Successful registration stores the received authentication token in local storage and redirects the user to the admin profile page. Error handling is implemented to display appropriate messages for common issues, such as mismatched passwords or server errors. The component ensures a smooth registration process, enhancing the onboarding experience for new administrators.
+
+ index.js(CustomerPart) : The CustomerPart component provides a UI for customers to place new laundry orders. It uses the useQuery hook to display user info (first and last names) and the useState hook to manage form data (address, tariff, and date) with default values. The useMutation hook handles order creation via the laundryApiHandler.createOrder API, redirecting users to the order page upon success. It also includes a logout function that clears the token from local storage and redirects to the home page, ensuring smooth form submission and navigation for a better customer experience.
+
+index.js(CustomerRegistration) : The CustomerRegistration component provides a form for new customers to sign up for the laundry service, managing inputs with useState. It checks for an existing token on load, redirecting logged-in users to their profile. On form submission, it validates passwords and registers the user via Axios, storing the token in local storage and redirecting to the profile page. Error handling addresses issues like mismatched passwords and server errors. A logout function clears the token and redirects to the home page.
+
+index.js(Orders) : he AdminOrders component lets admins manage orders, using useQuery to fetch data and distinguish admin from customer views. Admins can view and accept orders via the useMutation hook with the acceptOrder API call. Customers can view and place orders. It handles loading states and includes a logout function to clear the token and redirect to the home page. The UI shows order details like address, tariff, and dates for efficient management.
+
+
+# Entities
+User.java: This entity represents users within the online laundry service, implementing `UserDetails` from Spring Security for authentication. It includes fields like `id`, `userName`, `firstname`, `lastname`, `address`, `companyName`, `email`, `gender`, `password`, and `role`. The role determines user permissions, managed by `getAuthorities()` which assigns roles as `GrantedAuthority` objects. The class includes basic account status methods (`isAccountNonExpired`, `isAccountNonLocked`, `isCredentialsNonExpired`, `isEnabled`), all returning `true` for simplicity. The `getUsername()` method returns the email, aligning with Spring Security's expectations, while `getRealUsername()` provides the actual username.
+
+Order.java: This entity represents laundry orders within the application. It includes fields such as `id`, `tariff`, `createdAt`, `updatedAt`, `customer`, `admin`, `address`, and `selectedDate`. The `id` is generated automatically using the `IDENTITY` strategy. Timestamps for order creation and updates are managed with Hibernate annotations (`@CreationTimestamp` and `@UpdateTimestamp`). The `tariff` field is an enumerated type indicating the selected pricing plan for the service. Relationships are established with the `User` entity, linking each order to a customer and optionally to an admin. The `address` and `selectedDate` fields store the order's delivery address and the date selected for the service, supporting efficient tracking and management of laundry orders.
+ 
+
 
 # Getting Started
 # Prerequisites
@@ -30,3 +44,17 @@ If the terminal outputs a success message, the application is running correctly.
 Accessing the Application
 Open your preferred web browser and go to localhost:3000.
 If the application loads successfully, you have set up everything correctly and can now use the service.
+
+## Installation
+
+To install the project dependencies, run the following command:
+
+```bash
+# Install dependencies
+npm install
+\```
+
+```bash
+# for running application input in the terminal 
+npm start
+
